@@ -1,19 +1,15 @@
-import { useContextCarrito } from '@/Context/ProviderProducto'
-import { Producto } from '@/Modelos/Producto'
-import React from 'react'
+// Botonos/AgregarCarrito.tsx
 
-export default function AgregarCarrito(item:Producto) {
+import { useContextCarrito } from '@/Context/ProviderProducto';
+import { Producto } from '@/Modelos/Producto';
+import React from 'react';
 
-    const {productoCarrito, setProductoCarrito}= useContextCarrito();
+export default function AgregarCarrito(item: Producto) {
+    const { addToCart } = useContextCarrito();
 
-    function agregarCarrito(item:Producto){
-        setProductoCarrito([...productoCarrito, item])
-    }
-
-  return (
-    <div>
-      <a href="#" className="btn btn-primary" onClick={()=> agregarCarrito(item)}>Agregar al carrito</a>
-
-    </div>
-  )
+    return (
+        <div>
+            <a href="#" className="btn btn-primary" onClick={() => addToCart(item)}>Agregar al carrito</a>
+        </div>
+    );
 }

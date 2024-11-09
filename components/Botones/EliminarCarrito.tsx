@@ -1,21 +1,15 @@
-import { useContextCarrito } from '@/Context/ProviderProducto'
-import { Producto } from '@/Modelos/Producto'
-import React from 'react'
+// Botonos/EliminarCarrito.tsx
 
-export default function EliminarCarrito(item:Producto) {
+import { useContextCarrito } from '@/Context/ProviderProducto';
+import { Producto } from '@/Modelos/Producto';
+import React from 'react';
 
- const {productoCarrito, setProductoCarrito}= useContextCarrito()
+export default function EliminarCarrito(item: Producto) {
+    const { removeFromCart } = useContextCarrito();
 
- function eliminarDelCarrito(producId: number){
-
-
-    setProductoCarrito(productoCarrito.filter(producto => producto.IdProducto!==producId))
-
- }
-  return (
-   <div>
-      <a href="#" className="btn btn-danger" onClick={()=> eliminarDelCarrito(item.IdProducto)}>Eliminar del carrito</a>
-
-    </div>
-  )
+    return (
+        <div>
+            <a href="#" className="btn btn-danger" onClick={() => removeFromCart(item.IdProducto)}>Eliminar del carrito</a>
+        </div>
+    );
 }
